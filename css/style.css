@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+:root {
+  --unit-rem: 1rem; /* 1rem = 10px */
+
+  /* Colors: Primary */
+  --color-red-500: hsl(10, 79%, 65%);
+  --color-blue-300: hsl(186, 34%, 65%);
+
+  /* Colors: Neutral */
+  --color-brown-950: hsl(25, 47%, 15%);
+  --color-brown-400: hsl(28, 10%, 53%);
+  --color-red-100: hsl(26, 66%, 93%);
+
+  /* Font-Family */
+  --ff-primary: "DM Sans", sans-serif;
+
+  /* Border Radius */
+  --br-4: 4px;
+  --br-6: 6px;
+  --br-12: 12px;
+
+  /* Bar Width */
+  --bar-width: calc(var(--unit-rem) * 4);
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-red-100);
+  font-family: var(--ff-primary);
+  font-size: calc(var(--unit-rem) * 1.6);
+  min-height: 100dvh;
+}
+
+/* main */
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* main-container */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+  width: calc(var(--unit-rem) * 35);
+
+  @media screen and (min-width: 425px) {
+    width: calc(var(--unit-rem) * 40);
+  }
+}
+
+/* balance-card */
+.balance-card {
+  color: var(--color-red-100);
+  background-color: var(--color-red-500);
+  border-radius: var(--br-12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(var(--unit-rem) * 2) calc(var(--unit-rem) * 1.8);
+}
+
+.balance-card__label {
+  font-size: calc(var(--unit-rem) * 1.4);
+  display: inline-block;
+  line-height: 1.6;
+}
+
+.balance-card__amount {
+  display: block;
+  font-size: calc(var(--unit-rem) * 1.8);
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+/* spending-summary */
+.spending-summary {
+  background-color: #fff;
+  border-radius: var(--br-12);
+  padding: calc(var(--unit-rem) * 2) calc(var(--unit-rem) * 1.8);
+}
+
+.spending-summary__header {
+  font-size: calc(var(--unit-rem) * 2.2);
+}
+
+.spending-summary__chart {
+  display: flex;
+  justify-content: space-between;
+  margin: calc(var(--unit-rem) * 3.5) 0 0;
+  height: calc(var(--unit-rem) * 15);
+}
+
+.spending-summary__bar {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.5rem;
+  transition: all 500ms ease-in-out;
+  align-self: flex-end;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.spending-summary__amount {
+  color: var(--color-red-100);
+  background-color: var(--color-brown-950);
+  border-radius: var(--br-4);
+  display: inline-block;
+  font-size: calc(var(--unit-rem) * 1.2);
+  padding: 0.5rem 0.4em;
+  position: absolute;
+  bottom: 105%;
+  left: 0;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 500ms ease-in-out;
+}
+
+.spending-summary__bar-fill {
+  background-color: var(--color-red-500);
+  border-radius: var(--br-6);
+  position: relative;
+  width: var(--bar-width);
+}
+
+.spending-summary__bar-fill-wed {
+  background-color: var(--color-blue-300);
+}
+
+.spending-summary__day {
+  justify-self: flex-end;
+  text-align: center;
+  font-size: calc(var(--unit-rem) * 1.2);
+}
+
+.spending-summary__bar:hover .spending-summary__bar-fill,
+.spending-summary__bar:focus .spending-summary__bar-fill {
+  opacity: 0.7;
+}
+
+.spending-summary__bar:hover .spending-summary__amount,
+.spending-summary__bar:focus .spending-summary__amount {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.spending-summary__footer {
+  border-top: 2px solid hsl(10, 79%, 65%, 10%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: calc(var(--unit-rem) * 2.5) 0 0;
+  padding: calc(var(--unit-rem) * 2.5) 0 0;
+}
+
+.spending-summary__label {
+  color: var(--color-brown-400);
+  font-size: calc(var(--unit-rem) * 1.2);
+}
+
+.spending-summary__total {
+  color: var(--color-brown-950);
+  display: block;
+  font-size: calc(var(--unit-rem) * 2);
+  font-weight: 700;
+}
+
+.spending-summary__percentage {
+  font-size: calc(var(--unit-rem) * 1.4);
+  font-weight: 700;
+  text-align: right;
+}
+
+.spending-summary__percentage span {
+  color: var(--color-brown-400);
+  display: block;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 320px) and (max-width: 426px) {
+  html {
+    font-size: 50%;
+  }
+}
